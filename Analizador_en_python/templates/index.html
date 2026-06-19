@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Ecuaciones - Analizador</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Analizador Sintáctico</h1>
+        <p class="subtitle">Sistema de 2 ecuaciones lineales con 2 incógnitas (x, y)</p>
+
+        <div class="problem-statement">
+            <strong>Problema:</strong> Una papelería vende cuadernos y lápices.
+            <div class="problem-vars">
+                <strong>x</strong>: número de cuadernos vendidos &nbsp;|&nbsp;
+                <strong>y</strong>: número de lápices vendidos
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="eq1">Ecuación 1</label>
+            <input type="text" id="eq1" placeholder="Ej: x + y = 30">
+        </div>
+        <div class="input-group">
+            <label for="eq2">Ecuación 2</label>
+            <input type="text" id="eq2" placeholder="Ej: x - y = 6">
+        </div>
+        <p class="hint">Formato: combinación de x, y, +, - y un número después de =</p>
+
+        <button onclick="solve()">Resolver</button>
+
+        <div id="loading">Analizando...</div>
+        <div id="result"></div>
+        <div id="conclusion"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
