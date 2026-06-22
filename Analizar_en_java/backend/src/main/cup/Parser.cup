@@ -1,0 +1,27 @@
+import java_cup.runtime.*;
+
+/* Terminales */
+terminal MAS, MENOS, ASIGNACION;
+terminal String NUMBER, ID;
+
+/* No terminales */
+non terminal program, equation_list, equation, expression;
+
+/* Precedencia */
+precedence left MAS, MENOS;
+
+/* Regla inicial */
+program ::= equation_list ;
+
+/* Lista de ecuaciones */
+equation_list ::= equation_list equation
+                | equation ;
+
+/* Ecuacion */
+equation ::= expression ASIGNACION expression ;
+
+/* Expresiones */
+expression ::= expression MAS expression
+             | expression MENOS expression
+             | ID
+             | NUMBER ;

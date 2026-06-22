@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APE11AT - Analizador</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Analizador Sintactico APE11AT</h1>
+        <div class="toolbar">
+            <label class="backend-label">
+                Backend:
+                <select id="backendSelect">
+                    <option value="java">Java (:8080)</option>
+                    <option value="python">Python (:8081)</option>
+                </select>
+            </label>
+            <span id="backendStatus" class="status-badge">● verificando...</span>
+        </div>
+        <textarea id="codeInput" rows="10" placeholder="Escribe tu codigo aqui...">x = 10 + 5</textarea>
+        <div class="buttons">
+            <button id="parseBtn">Analizar</button>
+        </div>
+        <div id="output"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
