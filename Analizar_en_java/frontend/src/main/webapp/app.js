@@ -1,6 +1,6 @@
 const BACKENDS = {
-    java: { port: 8080, label: 'Java' },
-    python: { port: 8081, label: 'Python' }
+    java: { baseUrl: 'http://172.183.119.129:8080', label: 'Java' },
+    python: { baseUrl: 'http://172.183.119.129:8081', label: 'Python' }
 };
 
 let activeBackend = 'java';
@@ -13,13 +13,14 @@ const parseBtn = document.getElementById('parseBtn');
 
 function apiUrl() {
     const be = BACKENDS[activeBackend];
-    return `http://localhost:${be.port}/api/parse`;
+    return `${be.baseUrl}/api/parse`;
 }
 
 async function checkBackend(backend) {
     const be = BACKENDS[backend];
+    const url = `${be.baseUrl}/api/parse`;
     try {
-        const res = await fetch(`http://localhost:${be.port}/api/parse`, {
+        const res = await fetch(url, {
             method: 'POST',
             body: 'x = 1'
         });
@@ -55,7 +56,7 @@ parseBtn.addEventListener('click', async () => {
     const ok = await checkBackend(activeBackend);
     if (!ok) {
         output.className = 'error';
-        output.innerHTML = `<div class="msg">✖ ${BACKENDS[activeBackend].label} no esta disponible en localhost:${BACKENDS[activeBackend].port}</div>`;
+        output.innerHTML = `<div class="msg">✖ ${BACKENDS[activeBackend].label} no esta disponible en ${apiUrl()}</div>`;
         updateStatus();
         return;
     }
