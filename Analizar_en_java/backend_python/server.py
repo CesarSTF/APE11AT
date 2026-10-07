@@ -166,7 +166,7 @@ class ParseHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         if self.path == '/':
-            self.send_error(404, 'Este es solo el backend API. Usa http://localhost:8080 para el frontend.')
+            self.send_error(404, 'Este es solo el backend API. El frontend usa http://172.183.119.129:8081/api/parse.')
             return
         self.send_error(404)
 
